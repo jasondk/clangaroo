@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+
+# Development files
+*_PLAN.md
+*_SUMMARY.md
+PROGRESS_LOG.md
+debug_*.py
+test_*.py
+*.backup
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+.cache/
+*.db
+compile_commands.json
+.clangd/
+
+# Logs
+*.log
