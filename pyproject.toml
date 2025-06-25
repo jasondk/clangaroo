@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "clangaroo"
 version = "0.1.0"
 description = "🦘 Clangaroo - MCP server that helps Claude jump around C++ codebases via clangd"
-authors = [{name = "Jason de Koning & Claude", email = "jason@example.com"}]
+authors = [{name = "Jason de Koning & Claude", email = "jason.de.koning@gmail.com"}]
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
