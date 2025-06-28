@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.2.0] - 2024-12-28
+## [0.2.0] - 2025-06-28
 
 ### Fixed
 - Fixed critical daemon startup errors that prevented the MCP server from initializing
@@ -20,7 +20,7 @@
 - Improved event loop handling after fork operations
 - Added comprehensive logging throughout the startup process
 
-## [0.1.0] - 2024-01-XX
+## [0.1.0] - 2025-06-25
 
 ### Initial Release
 - Core MCP server implementation for C++ code intelligence
