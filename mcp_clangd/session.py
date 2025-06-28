@@ -6,6 +6,7 @@ import fnmatch
 from typing import Optional, Dict, Any, List
 from pathlib import Path
 
+from . import __version__
 from .backend import Backend
 from .utils import PerformanceTimer, log_error_with_context
 
@@ -134,7 +135,7 @@ class ClientSession:
                 },
                 "serverInfo": {
                     "name": "mcp-clangd",
-                    "version": "0.1.0"
+                    "version": __version__
                 }
             }
         }

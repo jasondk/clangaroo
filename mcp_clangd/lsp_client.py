@@ -11,6 +11,7 @@ from typing import Dict, Any, Optional, Callable, List, Union
 from dataclasses import dataclass, field
 from urllib.parse import urljoin
 
+from . import __version__
 from .clangd_manager import ClangdManager
 from .utils import PerformanceTimer, log_error_with_context
 
@@ -157,7 +158,7 @@ class LSPClient:
             "processId": None,
             "clientInfo": {
                 "name": "mcp-clangd",
-                "version": "0.1.0"
+                "version": __version__
             },
             "rootUri": f"file://{self.clangd_manager.config.project_root}",
             "capabilities": {

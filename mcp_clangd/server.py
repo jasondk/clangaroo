@@ -11,6 +11,7 @@ import fnmatch
 from typing import Dict, Any, Optional, List
 from pathlib import Path
 
+from . import __version__
 from .config import Config
 from .clangd_manager import ClangdManager
 from .lsp_client import LSPClient
@@ -222,7 +223,7 @@ class MCPClangdServer:
                 },
                 "serverInfo": {
                     "name": "mcp-clangd",
-                    "version": "0.1.0"
+                    "version": __version__
                 }
             }
         }
