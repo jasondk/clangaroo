@@ -6,7 +6,7 @@ LSP (Language Server Protocol) capabilities, providing Claude Code with
 fast, reliable C++ code intelligence.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "Rich Context Team"
 
 from .server import MCPClangdServer

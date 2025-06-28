@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.2.0] - 2024-12-28
+
+### Fixed
+- Fixed critical daemon startup errors that prevented the MCP server from initializing
+- Fixed `TypeError: LLMProvider() takes no arguments` by removing incorrect instantiation of abstract class
+- Fixed `TypeError: EnhancedAISummaryCache.__init__() missing 1 required positional argument` by proper initialization
+- Fixed async/sync issues in daemon fork process
+- Fixed file descriptor handling for proper daemon detachment
+- Fixed proxy handling of parent process exit code 0
+
+### Improved
+- Enhanced error logging with file-based startup log at `/tmp/clangaroo-daemon-startup.log`
+- Better daemon process management and error recovery
+- Increased daemon startup timeout from 5 to 10 seconds for reliability
+
+### Internal
+- Refactored daemon and proxy implementation for better separation of concerns
+- Improved event loop handling after fork operations
+- Added comprehensive logging throughout the startup process
+
 ## [0.1.0] - 2024-01-XX
 
 ### Initial Release
