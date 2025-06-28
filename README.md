@@ -1,6 +1,6 @@
 ![Clangaroo Banner](resources/clangaroo-banner.png)
 
-##**🦘 Clangaroo: Lightning-fast C++ code intelligence for LLMs via MCP**
+##**🦘 Clangaroo: Fast C++ code intelligence for LLMs via MCP**
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)

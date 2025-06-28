@@ -182,3 +182,73 @@ def uri_to_path(uri: str) -> str:
     else:
         # Not a file URI, return as-is
         return uri
+
+
+def project_socket_path(project_root: Path) -> str:
+    """
+    Generates a deterministic, project-specific Unix socket path in a secure,
+    temporary directory.
+    """
+    import hashlib
+    import tempfile
+    # Use a hash of the resolved absolute path for consistency.
+    digest = hashlib.sha1(str(project_root.resolve()).encode()).hexdigest()[:12]
+    socket_dir = Path(tempfile.gettempdir()) / "clangaroo-sockets"
+    # Ensure the directory exists with secure permissions (owner access only).
+    socket_dir.mkdir(mode=0o700, exist_ok=True)
+    return str(socket_dir / f"clangaroo-{digest}.sock")
+
+
+def is_socket_active(socket_path: str) -> bool:
+    """
+    Checks if a process is actively listening on the given Unix socket path.
+    Returns True if active, False otherwise.
+    """
+    import os
+    import stat
+    import socket
+    
+    if not os.path.exists(socket_path):
+        return False
+
+    try:
+        if not stat.S_ISSOCK(os.stat(socket_path).st_mode):
+            logger.warning(f"Path exists but is not a socket: {socket_path}. Will treat as inactive.")
+            return False
+    except FileNotFoundError:
+        return False
+
+    s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    try:
+        # Set a short timeout to avoid blocking if the daemon is hung.
+        s.settimeout(0.1)
+        s.connect(socket_path)
+        s.close()
+        return True
+    except (ConnectionRefusedError, FileNotFoundError):
+        # This indicates a stale socket file where no process is listening.
+        return False
+    except (PermissionError, socket.timeout):
+        # A timeout or permission error likely means the daemon is active but busy.
+        return True
+    except Exception as e:
+        logger = logging.getLogger(__name__)
+        logger.error(f"Unexpected error while checking socket {socket_path}: {e}")
+        return False # Err on the side of caution.
+
+
+def cleanup_stale_socket(socket_path: str):
+    """
+    Removes a socket file if and only if it is determined to be stale (i.e.,
+    no process is listening on it).
+    """
+    import os
+    
+    if os.path.exists(socket_path) and not is_socket_active(socket_path):
+        try:
+            os.unlink(socket_path)
+            logger = logging.getLogger(__name__)
+            logger.info(f"Removed stale socket file: {socket_path}")
+        except OSError as e:
+            logger = logging.getLogger(__name__)
+            logger.error(f"Error removing stale socket {socket_path}: {e}")

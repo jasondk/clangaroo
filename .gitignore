@@ -13,6 +13,8 @@ dist/
 build/
 
 # Development files
+CLAUDE.md
+REFACTOR.md
 *_PLAN.md
 *_SUMMARY.md
 PROGRESS_LOG.md
@@ -35,6 +37,7 @@ Thumbs.db
 *.db
 compile_commands.json
 .clangd/
+test_project/
 
 # Logs
 *.log

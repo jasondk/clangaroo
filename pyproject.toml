@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clangaroo"
-version = "0.1.0"
+version = "0.2.0"
 description = "🦘 Clangaroo - MCP server that helps Claude jump around C++ codebases via clangd"
 authors = [{name = "Jason de Koning & Claude", email = "jason.de.koning@gmail.com"}]
 readme = "README.md"
