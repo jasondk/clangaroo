@@ -9,7 +9,7 @@ from typing import List, Optional, Dict, Any
 
 from .lsp_client import LSPClient, path_to_uri, uri_to_path
 from .utils import PerformanceTimer
-from .type_hierarchy_methods import TypeHierarchyMethods
+# from .type_hierarchy_methods import TypeHierarchyMethods  # TODO: Module not implemented yet
 
 
 logger = logging.getLogger(__name__)
@@ -110,7 +110,8 @@ class LSPMethods:
     def __init__(self, lsp_client: LSPClient):
         self.lsp_client = lsp_client
         self.document_manager = DocumentManager(lsp_client)
-        self.type_hierarchy = TypeHierarchyMethods(lsp_client, self.document_manager)
+        # self.type_hierarchy = TypeHierarchyMethods(lsp_client, self.document_manager)  # TODO: Module not implemented yet
+        self.type_hierarchy = None
         
         # AI components (initialized later if AI features are enabled)
         self.llm_provider = None
@@ -164,7 +165,7 @@ class LSPMethods:
             self.context_provider = None
         
         # Propagate AI components to type hierarchy
-        self._update_type_hierarchy_ai_components()
+        # self._update_type_hierarchy_ai_components()  # TODO: Module not implemented yet
         
     async def get_definition(self, file: str, line: int, column: int) -> Optional[List[Dict[str, Any]]]:
         """Get symbol definition
@@ -964,7 +965,8 @@ class LSPMethods:
     
     async def prepare_type_hierarchy(self, file: str, line: int, column: int):
         """Prepare type hierarchy items for a symbol"""
-        return await self.type_hierarchy.prepare_type_hierarchy(file, line, column)
+        # TODO: TypeHierarchyMethods not implemented yet
+        return None
 
     async def get_supertypes(self, file: str, line: int, column: int,
                            analyze: bool = False, analysis_level: Optional[str] = None,
@@ -985,7 +987,8 @@ class LSPMethods:
             else:
                 context_level = "local"
         
-        return await self.type_hierarchy.get_supertypes(file, line, column, analyze, analysis_level, context_level)
+        # TODO: TypeHierarchyMethods not implemented yet
+        return []
 
     async def get_subtypes(self, file: str, line: int, column: int,
                           analyze: bool = False, analysis_level: Optional[str] = None,
@@ -1006,7 +1009,8 @@ class LSPMethods:
             else:
                 context_level = "local"
         
-        return await self.type_hierarchy.get_subtypes(file, line, column, analyze, analysis_level, context_level)
+        # TODO: TypeHierarchyMethods not implemented yet
+        return []
     
     def _update_type_hierarchy_ai_components(self):
         """Update type hierarchy methods with AI components"""
