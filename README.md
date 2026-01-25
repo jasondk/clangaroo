@@ -9,6 +9,8 @@
 
 ## ✨ About
 
+NOTE (January 2026): Claude Code now has built-in support for LSPs, making this unnecessary. Since it may still be useful in other agentic harnesses I'll leave the project here for now.
+
 Clangaroo enables [Claude Code](https://www.anthropic.com/claude-code), [Gemini CLI](https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/), and other coding agents to jump around your C++ codebase with ease. Clangaroo provides fast, direct lookup of C/C++ symbols, functions, definitions, call hierarchies, type hierarchies, and more by your bestest LLM pals.
 
 Clangaroo combines the speed of [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) parsing with the accuracy of [clangd LSP](https://clangd.llvm.org), optionally enhanced by [Google Gemini Flash](https://deepmind.google/models/gemini/flash/) AI for deeper insights. **Let your AI buddies spend more time coding and less time stumbling around.**
